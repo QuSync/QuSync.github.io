@@ -13,6 +13,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/api/data')
+def get_data():
+    return jsonify({"message": "Hello from Flask!"})
+
 @app.route("/unit_conversion.html")
 @app.route("/unit_conversion")
 def uc():
