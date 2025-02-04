@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Technnovate{% endblock %}
+
+{% block content %}
+
+
+  <!-- GSAP for Animations -->
+  <!--cloudflare animation is conflicting with animate.min.css-->
+  <!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  -->
+  <!-- Chart.js for Plots -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Plotly for Heatmap -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tmm_style.css') }}">
+
+
+  <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-0 wow fadeIn" data-wow-delay="0.1s">
+      <div class="text-center">
+        <div class="hero">
+            <h1 class="display-4 text-primary animated slideInDown mb-0">Matrix<span class="text-white">Method</span></h1>
+            <p class="text-white">Currently<br>For dielectric layered structures only</p>
+            <button class="cta-button" onclick="scrollToBottom(); return false">Explore Solutions</button>
+        </div>
+        <nav aria-label="breadcrumb animated slideInDown">
+        </nav>
+      </div>
+     
+    <a id="bottom"></a>
+    </div>
+    
+
+  <!-- Page Header End -->
+
+
+  <div class="container-fluid py-5">
+
+    <!-- Header 
+    <h1 class="text-center mb-4 animate__animated animate__fadeIn">Transfer Matrix Method</h1> -->
+    
+    <div class="row">
+      <!-- Left Column for Inputs -->
+      <div class="col-md-6">
+        <!-- Layer Table -->
+        <div class="card shadow-lg mb-4 animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h2 class="card-title">Add Layers</h2>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="insertPosition" class="form-label">Insert at Position:</label>
+                <input type="number" id="insertPosition" class="form-control" min="1" required>
+              </div>
+              <div class="col-md-6 d-flex align-items-end">
+                <button class="btn btn-primary w-100" onclick="addRow()">Add Layer</button>
+              </div>
+            </div>
+
+            <h2 class="card-title">Layer Configuration</h2>
+            <div class="table-responsive">
+              <table id="layerTable" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Refractive Index</th>
+                    <th>Thickness (nm)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><input type="number" step="0.01" class="form-control" name="refractive_index" required></td>
+                    <td><input type="number" step="0.01" class="form-control" name="thickness" required></td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- calculation Parameters -->
+        <div class="card shadow-lg mb-4 animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h2 class="card-title">Wavelength (nm)</h2>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="wavelengthStart" class="form-label">Start:</label>
+                <input type="number" id="wavelengthStart" class="form-control" step="0.1" required>
+              </div>
+              <div class="col-md-4">
+                <label for="wavelengthEnd" class="form-label">End:</label>
+                <input type="number" id="wavelengthEnd" class="form-control" step="0.1" required>
+              </div>
+              <div class="col-md-4">
+                <label for="stepPoint" class="form-label">Step:</label>
+                <input type="number" id="stepPoint" class="form-control" step="0.1" required>
+              </div>
+            </div>
+            <div class="d-grid mt-3">
+              <button class="btn btn-success" onclick="submitData()">Submit</button>
+            </div>
+            <p><b><i>Note:</i></b> Lower step size would increase processing time !</p> <!-- bold and italic-->
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Right Column for Results and Plots -->
+      <div class="col-md-6">
+        <!-- Plots -->
+
+        <div class="card shadow-lg mb-4 animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h2 class="card-title">Index and Electric Field Intensity (|E|<sup>2</sup>):</h2>
+            <label for="electricFieldSlider" class="form-label">Select Wavelength:</label>
+            <input type="range" id="electricFieldSlider" class="form-range" min="0" max="100" value="0" step="1"
+              oninput="updateElectricFieldDataset(this.value)">
+            <span id="sliderValue">0</span><a> nm</a>
+
+            <div id="indexPlotContainer">
+              <canvas id="indexPlot"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-lg mb-4 animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h2 class="card-title">Reflectivity:</h2>
+            <div id="reflectancePlotContainer">
+              <canvas id="reflectancePlot"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-lg mb-4 animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h2 class="card-title">|E|<sup>2</sup> Heatmap:</h2>
+            <div id="heatmapPlot2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  -->
+
+  <!-- Custom JS -->
+  <script src="../static/js/tmm_scripts.js" defer></script>
+
+
+  {% endblock %}

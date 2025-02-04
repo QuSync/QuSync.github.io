@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Technnovate{% endblock %}
+
+{% block content %}
+
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header mb-0 wow fadeIn" data-wow-delay="0.1s">
+            <div class="text-center">
+                <div class="hero">
+                    <h1 class="display-4 text-primary animated slideInDown mb-0">Unit<span class="text-white">Converter</span></h1>
+                    <p class="text-white">Innovate with Us<br>Transforming ideas into reality.</p>
+                    <button class="cta-button" onclick="scrollToBottom(); return false">Explore Solutions</button>
+                </div>
+                <nav aria-label="breadcrumb animated slideInDown">
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+    <a id="bottom"></a>
+
+    <!--<link rel="stylesheet" href="/static/styles.css"> -->
+    <style>
+            .tabs {
+                display: flex;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+
+            .tab {
+                padding: 10px 20px;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                background: #f1f1f1;
+                margin-right: 5px;
+            }
+
+            .tab.active {
+                background: white;
+                border-top: 2px solid #007BFF;
+            }
+
+            .tab-content {
+                display: none;
+                border: 1px solid #ccc;
+                padding: 20px;
+                background: white;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+    </style>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <div class="tab active" data-target="length-converter">Length</div>
+            <div class="tab" data-target="energy-converter">Energy</div>
+            <div class="tab" data-target="frequency-converter">Frequency</div>
+        </div>
+
+        <!-- Tabs Content -->
+        <div id="length-converter" class="tab-content active">
+            <form id="length-converter-form">
+                <label for="length-input-unit">Input Unit:</label>
+                <select id="length-input-unit" name="input-unit">
+                    <option value="nm">nm</option>
+                    <option value="µm">µm</option>
+                </select>
+
+                <label for="length-input-value">Input Value:</label>
+                <input type="number" id="length-input-value" name="input-value" min="0" step="0.0001" required>
+
+                <button type="submit">Convert</button>
+            </form>
+            <div id="length-results"></div>
+        </div>
+
+        <div id="energy-converter" class="tab-content">
+            <form id="energy-converter-form">
+                <label for="energy-input-unit">Input Unit:</label>
+                <select id="energy-input-unit" name="input-unit">
+                    <option value="eV">eV</option>
+                    <option value="meV">meV</option>
+                </select>
+
+                <label for="energy-input-value">Input Value:</label>
+                <input type="number" id="energy-input-value" name="input-value" min="0" step="0.0001" required>
+
+                <button type="submit">Convert</button>
+            </form>
+            <div id="energy-results"></div>
+        </div>
+
+        <div id="frequency-converter" class="tab-content">
+            <form id="frequency-converter-form">
+                <label for="frequency-input-unit">Input Unit:</label>
+                <select id="frequency-input-unit" name="input-unit">
+                    <option value="THz">THz</option>
+                    <option value="fs">fs</option>
+                    <option value="ps">ps</option>
+                </select>
+
+                <label for="frequency-input-value">Input Value:</label>
+                <input type="number" id="frequency-input-value" name="input-value" min="0" step="0.0001" required>
+
+                <button type="submit">Convert</button>
+            </form>
+            <div id="frequency-results"></div>
+        </div>
+
+
+
+        {% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Technnovate{% endblock %}
+
+{% block content %}
+
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header mb-0 wow fadeIn" data-wow-delay="0.1s">
+            <div class="text-center">
+                <div class="hero">
+                    <h1 class="display-4 text-primary animated slideInDown mb-0">About<span class="text-white">Us</span></h1>
+                    <p class="text-white">Innovate with Us<br>Transforming ideas into reality.</p>
+                    <button class="cta-button" onclick="scrollToBottom(); return false">Explore Solutions</button>
+                </div>
+                <nav aria-label="breadcrumb animated slideInDown">
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        
+        <div>
+            <h1>Nitesh Singh - Academic Portfolio</h1>
+            <h1>Nitesh Singh</h1>
+            <p>Nanophotonics | Quantum Optics | Plasmonics</p>
+        </div>
+    
+        <section id="photo-frame">
+            <h2>Photo Gallery</h2>
+            <div class="slider-container">
+                <button id="prevBtn">&#10094;</button>
+                <div class="slider">
+                    <img src="image1.jpg" class="slide" alt="Image 1">
+                    <img src="image2.jpg" class="slide" alt="Image 2">
+                    <img src="image3.jpg" class="slide" alt="Image 3">
+                </div>
+                <button id="nextBtn">&#10095;</button>
+            </div>
+        </section>
+    
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <p>PhD candidate specializing in nanophotonics and quantum optics. Passionate about light-matter interactions in quantum systems.</p>
+        </section>
+    
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li><a href="https://doi.org/10.xxxx/yyyy" target="_blank">Title of Publication 1</a></li>
+                <li><a href="https://doi.org/10.xxxx/yyyy" target="_blank">Title of Publication 2</a></li>
+                <li><a href="https://doi.org/10.xxxx/yyyy" target="_blank">Title of Publication 3</a></li>
+            </ul>
+        </section>
+
+
+        {% endblock %}
