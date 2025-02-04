@@ -1,0 +1,63 @@
+/* General Styles */
+/*
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+  }
+  */
+  .card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.1s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .btn {
+    border-radius: 12px;
+    font-weight: bold;
+  }
+  
+  .form-control{
+    /*height: 24px;*/
+    width: 100%;
+  }
+  .table-responsive
+  {
+    width: 100%;
+  }
+
+  /* Table Styles */
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(223, 11, 11, 0.833);
+  }
+  
+  /* Slider Styles */
+  .form-range {
+    width: 100%;
+  }
+ 
+  /* Plot Container Styles */
+  #indexPlotContainer, #reflectancePlotContainer, #heatmapPlot2 {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    height: 400px; /* Adjust as needed */
+  }
+
+
+  .heatmap-plot {
+    grid-column: 2; /* Second column */
+    grid-row: 2;
+  }
+  
+  .index-plot {
+    grid-column: 1; /* Second column */
+    grid-row: 2 / span 2; /* Span two rows */
+    justify-self: center;
+    align-self: center;
+  }
